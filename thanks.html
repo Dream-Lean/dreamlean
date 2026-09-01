@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application received — Dream Lean</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Your Dream Lean coaching application has been received.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold:        #BF8F00;
+  --gold-bright: #D4A017;
+  --black:       #0F0F0F;
+  --dark:        #181818;
+  --grey:        #3A3A3A;
+  --text:        #E8E0D0;
+  --text-mute:   #9A9080;
+  --white:       #FFFFFF;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+header {
+  padding: 18px 48px;
+  border-bottom: 1px solid rgba(191,143,0,0.2);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 900;
+  color: var(--gold-bright);
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--white); }
+
+/* ── Body ─────────────────────────────────────────────────────── */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 24px;
+}
+.card { max-width: 620px; width: 100%; }
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 5vw, 56px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 18px;
+}
+.lede {
+  font-size: 17px;
+  color: var(--text);
+  margin-bottom: 40px;
+  max-width: 54ch;
+}
+.lede strong { color: var(--gold-bright); font-weight: 600; }
+
+.next {
+  border-top: 1px solid var(--grey);
+  padding-top: 32px;
+}
+.next h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 22px;
+}
+.next ol {
+  list-style: none;
+  counter-reset: step;
+}
+.next li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 42px;
+  margin-bottom: 22px;
+  color: var(--text-mute);
+  font-size: 15px;
+  max-width: 56ch;
+}
+.next li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 1px;
+  width: 26px; height: 26px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold-bright);
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.next li strong {
+  display: block;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.note {
+  background: var(--dark);
+  border-left: 2px solid var(--gold);
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--text-mute);
+  margin: 36px 0 40px;
+  max-width: 56ch;
+}
+.note a { color: var(--gold-bright); }
+
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--black);
+  padding: 14px 30px;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-primary:hover, .btn-primary:focus-visible { background: var(--gold-bright); }
+
+/* ── Footer ───────────────────────────────────────────────────── */
+footer {
+  padding: 28px 48px;
+  border-top: 1px solid var(--grey);
+  font-size: 13px;
+  color: var(--text-mute);
+}
+footer a { color: var(--text-mute); }
+
+a:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  header, footer { padding-left: 24px; padding-right: 24px; }
+  main { padding: 48px 24px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://dreamleannutrition.com/" class="nav-logo">DREΛM <span>LEΛN</span></a>
+</header>
+
+<main>
+  <div class="card">
+
+    <h1>Your application is in.</h1>
+
+    <p class="lede">Thanks for taking the time to write it properly. I read every application myself, and I'll reply <strong>within 48 hours</strong>.</p>
+
+    <div class="next">
+      <h2>What happens next</h2>
+      <ol>
+        <li><strong>I read your application</strong>Every one gets read personally. You'll hear back within 48 hours.</li>
+        <li><strong>We confirm the fit</strong>If coaching is right for you, I'll send your payment link. If it isn't, I'll tell you that too and point you somewhere better.</li>
+        <li><strong>You complete the full intake</strong>Once you're in, you'll get the detailed intake form. That's where we map your training, nutrition, schedule, and health history in full, and it's what your plan gets built from.</li>
+      </ol>
+    </div>
+
+    <p class="note">My reply comes from <a href="mailto:dream.lean@outlook.com">dream.lean@outlook.com</a>. Add it to your contacts now so it doesn't land in spam, and check that folder if you haven't heard from me in two days.</p>
+
+    <a href="https://dreamleannutrition.com/" class="btn-primary">Back to Dream Lean</a>
+
+  </div>
+</main>
+
+<footer>
+  © <span id="year">2026</span> Dream Lean — Simon Salvatore
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
