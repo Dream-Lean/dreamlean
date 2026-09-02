@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dream Lean — 1-on-1 Coaching Intake Form</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold:        #BF8F00;
+    --gold-bright: #D4A017;
+    --gold-pale:   #F7F3E8;
+    --charcoal:    #1E1E1E;
+    --grey-dark:   #2C2C2C;
+    --grey-med:    #5A5A5A;
+    --grey-light:  #F7F7F5;
+    --white:       #FFFFFF;
+    --black:       #1A1A1A;
+
+    /* ── Spacing scale — every gap in this form is one of these ─── */
+    --sp-1:  4px;
+    --sp-2:  8px;
+    --sp-3: 12px;
+    --sp-4: 16px;
+    --sp-5: 20px;
+    --sp-6: 24px;
+    --sp-7: 32px;
+
+    /* ── Type scale ─────────────────────────────────────────────── */
+    --fs-micro: 11px;   /* labels, hints, footer */
+    --fs-small: 13px;   /* options, boxed body text */
+    --fs-base:  14px;   /* inputs, buttons */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #EFEFEF;
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ──────────────────────────────────────────────────────── */
+  .hero {
+    background: var(--gold);
+    padding: 52px var(--sp-6) 36px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--charcoal);
+    letter-spacing: 2px;
+    margin-bottom: var(--sp-2);
+  }
+  .hero h1 span { color: var(--white); }
+  .hero-sub {
+    color: rgba(255,255,255,0.75);
+    font-size: var(--fs-base);
+    margin-top: var(--sp-1);
+  }
+  .hero-bar {
+    background: var(--charcoal);
+    padding: 10px var(--sp-6);
+    text-align: center;
+  }
+  .hero-bar p {
+    color: var(--gold-bright);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* ── FORM WRAPPER ──────────────────────────────────────────────── */
+  .form-wrapper {
+    max-width: 760px;
+    margin: var(--sp-7) auto 48px;
+    background: var(--white);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  }
+
+  /* ── SECTION ───────────────────────────────────────────────────── */
+  .section { margin-bottom: 0; }
+  .section + .section { margin-top: var(--sp-2); }
+
+  .section-header {
+    background: var(--charcoal);
+    color: var(--white);
+    font-size: var(--fs-micro);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px var(--sp-5);
+    border-left: 4px solid var(--gold-bright);
+  }
+
+  /* Symmetric padding. The last child's own margin is stripped below,
+     so the visual gap at the bottom equals the gap at the top. */
+  .section-body { padding: var(--sp-5); }
+  .section-body > *:last-child { margin-bottom: 0; }
+
+  /* ── GRID ROWS ─────────────────────────────────────────────────── */
+  /* align-items:end keeps the inputs on a shared baseline even when one
+     field carries a hint line and its neighbour doesn't. */
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+    align-items: end;
+    margin-bottom: var(--sp-4);
+  }
+  .row-1 { margin-bottom: var(--sp-4); }
+
+  /* ── FIELD ─────────────────────────────────────────────────────── */
+  .field label,
+  .checkbox-group .group-label {
+    display: block;
+    font-size: var(--fs-micro);
+    font-weight: 700;
+    color: var(--grey-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--sp-1);
+  }
+  .field .hint,
+  .checkbox-group .hint {
+    display: block;
+    font-size: var(--fs-micro);
+    color: var(--grey-med);
+    font-style: italic;
+    margin-bottom: var(--sp-1);
+  }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field textarea,
+  .field select {
+    width: 100%;
+    background: var(--grey-light);
+    border: none;
+    border-bottom: 2px solid var(--gold-bright);
+    border-radius: 2px 2px 0 0;
+    padding: var(--sp-2) var(--sp-3);
+    font-size: var(--fs-base);
+    color: var(--black);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    border-bottom-color: var(--gold);
+    background: var(--gold-pale);
+  }
+  /* rows="" governs height, so a 2-row box is visibly shorter than a 4-row one */
+  .field textarea { resize: vertical; display: block; }
+
+  /* ── TINTED BOXES — one shared shape ───────────────────────────── */
+  .checkbox-group,
+  .info-box,
+  .agreement-text {
+    padding: var(--sp-3) var(--sp-4);
+    margin-bottom: var(--sp-4);
+    border-radius: 2px;
+  }
+  .checkbox-group { background: var(--grey-light); }
+  .agreement-text {
+    background: var(--grey-light);
+    font-size: var(--fs-small);
+    color: var(--grey-dark);
+    line-height: 1.6;
+  }
+  .consent-row {
+    padding: var(--sp-3) var(--sp-4);
+    margin-bottom: var(--sp-4);
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold-bright);
+    border-radius: 0 2px 2px 0;
+    font-size: var(--fs-small);
+    color: var(--grey-dark);
+    line-height: 1.6;
+    display: block;
+    cursor: pointer;
+  }
+  .consent-row input { margin-right: var(--sp-2); accent-color: var(--gold); }
+  .consent-row a { color: var(--gold); }
+
+  .info-box {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold-bright);
+    border-radius: 0 2px 2px 0;
+    font-size: var(--fs-small);
+    color: var(--grey-dark);
+  }
+
+  .check-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2) var(--sp-4);
+  }
+  .check-options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-small);
+    color: var(--black);
+    cursor: pointer;
+    font-weight: 400;
+  }
+  .check-options input[type="checkbox"],
+  .check-options input[type="radio"] {
+    accent-color: var(--gold);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+  .check-options input:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* ── SUBMIT ────────────────────────────────────────────────────── */
+  .submit-area {
+    background: var(--charcoal);
+    padding: 28px var(--sp-5);
+    text-align: center;
+  }
+  .submit-area p {
+    color: var(--grey-med);
+    font-size: 12px;
+    margin-bottom: var(--sp-4);
+    font-style: italic;
+  }
+  button[type="submit"] {
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    padding: 14px 52px;
+    font-size: var(--fs-base);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button[type="submit"]:hover { background: var(--gold-bright); }
+  button[type="submit"]:focus-visible {
+    outline: 2px solid var(--gold-pale);
+    outline-offset: 3px;
+  }
+
+  /* ── FOOTER ────────────────────────────────────────────────────── */
+  footer {
+    text-align: center;
+    padding: 18px var(--sp-6);
+    font-size: var(--fs-micro);
+    background: var(--charcoal);
+    color: #6E6E6E;
+  }
+
+  @media (max-width: 600px) {
+    .form-wrapper { margin: var(--sp-4) auto var(--sp-6); }
+    .row-2 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>DRE&#923;M <span>LE&#923;N</span></h1>
+  <p class="hero-sub">1-on-1 Coaching</p>
+</div>
+<div class="hero-bar">
+  <p>Client Intake Form &nbsp;|&nbsp; 12-Week Program</p>
+</div>
+
+<div class="form-wrapper">
+<form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="17786c4f-865b-4e46-89d5-ceb381f67ce4">
+  <input type="hidden" name="subject" value="INTAKE FORM - new Dream Lean coaching client">
+  <input type="hidden" name="from_name" value="Dream Lean intake form">
+  <input type="hidden" name="redirect" value="https://dreamleannutrition.com/intake-received.html">
+  <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+
+  <!-- 01 PERSONAL DETAILS -->
+  <div class="section">
+    <div class="section-header">01 &nbsp; Personal Details</div>
+    <div class="section-body">
+      <div class="row-2">
+        <div class="field"><label>Full name</label><input type="text" name="full_name" placeholder="Your full name" required></div>
+        <div class="field"><label>Date of birth</label><span class="hint">DD / MM / YYYY</span><input type="text" name="dob" placeholder="DD / MM / YYYY"></div>
+      </div>
+      <div class="row-2">
+        <div class="field"><label>Email address</label><input type="email" name="email" placeholder="you@example.com" required></div>
+        <div class="field"><label>Phone number</label><span class="hint">Optional</span><input type="tel" name="phone" placeholder="+31 6 ..."></div>
+      </div>
+      <div class="row-2">
+        <div class="field"><label>Country / Time zone</label><span class="hint">For scheduling check-ins</span><input type="text" name="timezone" placeholder="e.g. Netherlands / CET"></div>
+        <div class="field"><label>How did you find me?</label><input type="text" name="referral" placeholder="Instagram, website, friend..."></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 BODY STATS -->
+  <div class="section">
+    <div class="section-header">02 &nbsp; Body Stats</div>
+    <div class="section-body">
+      <div class="row-2">
+        <div class="field"><label>Current weight</label><span class="hint">kg or lbs</span><input type="text" name="weight" placeholder="e.g. 82 kg"></div>
+        <div class="field"><label>Current height</label><span class="hint">cm or ft/in</span><input type="text" name="height" placeholder="e.g. 178 cm"></div>
+      </div>
+      <div class="row-2">
+        <div class="field"><label>Gender</label><input type="text" name="gender" placeholder="e.g. Male / Female / Other"></div>
+        <div class="field"><label>Body fat % (if known)</label><span class="hint">Estimate is fine</span><input type="text" name="bodyfat" placeholder="e.g. ~18%"></div>
+      </div>
+      <div class="checkbox-group">
+        <div class="group-label">How would you describe your current physique?</div>
+        <div class="check-options">
+          <label><input type="radio" name="physique" value="Skinny"> Skinny</label>
+          <label><input type="radio" name="physique" value="Skinny-fat"> Skinny-fat</label>
+          <label><input type="radio" name="physique" value="Average"> Average</label>
+          <label><input type="radio" name="physique" value="Slightly overweight"> Slightly overweight</label>
+          <label><input type="radio" name="physique" value="Overweight"> Overweight</label>
+          <label><input type="radio" name="physique" value="Muscular"> Muscular</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 GOALS -->
+  <div class="section">
+    <div class="section-header">03 &nbsp; Goals</div>
+    <div class="section-body">
+      <div class="checkbox-group">
+        <div class="group-label">Primary goal for this 12-week program</div>
+        <div class="check-options">
+          <label><input type="radio" name="goal" value="Fat loss"> Fat loss</label>
+          <label><input type="radio" name="goal" value="Muscle and strength gain"> Muscle &amp; strength gain</label>
+          <label><input type="radio" name="goal" value="Body recomposition"> Body recomposition</label>
+          <label><input type="radio" name="goal" value="Energy and performance"> Energy &amp; performance</label>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field"><label>Target weight (if applicable)</label><span class="hint">kg or lbs</span><input type="text" name="target_weight" placeholder="e.g. 75 kg"></div>
+        <div class="field"><label>Target date or event</label><span class="hint">e.g. holiday, competition</span><input type="text" name="target_date" placeholder="e.g. Summer holiday June 2026"></div>
+      </div>
+      <div class="row-1 field">
+        <label>Describe your goal in your own words</label>
+        <span class="hint">What does success look like to you at the end of 12 weeks?</span>
+        <textarea name="goal_description" rows="3" placeholder="Be as specific as you like..."></textarea>
+      </div>
+      <div class="row-1 field">
+        <label>What has stopped you from reaching this goal before?</label>
+        <span class="hint">Be as honest as you like. This helps me tailor the program.</span>
+        <textarea name="goal_obstacles" rows="3" placeholder="Lack of consistency, no structure, diet confusion..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 NUTRITION HISTORY -->
+  <div class="section">
+    <div class="section-header">04 &nbsp; Nutrition History</div>
+    <div class="section-body">
+      <div class="checkbox-group">
+        <div class="group-label">How would you rate your current eating habits?</div>
+        <div class="check-options">
+          <label><input type="radio" name="eating_habits" value="Poor"> Poor</label>
+          <label><input type="radio" name="eating_habits" value="Below average"> Below average</label>
+          <label><input type="radio" name="eating_habits" value="Average"> Average</label>
+          <label><input type="radio" name="eating_habits" value="Good"> Good</label>
+          <label><input type="radio" name="eating_habits" value="Very structured"> Very structured</label>
+        </div>
+      </div>
+      <div class="checkbox-group">
+        <div class="group-label">Have you tracked calories or macros before?</div>
+        <div class="check-options">
+          <label><input type="radio" name="tracking_history" value="Never"> Never</label>
+          <label><input type="radio" name="tracking_history" value="Tried briefly"> Tried briefly</label>
+          <label><input type="radio" name="tracking_history" value="On and off"> On and off</label>
+          <label><input type="radio" name="tracking_history" value="Regularly"> Regularly</label>
+          <label><input type="radio" name="tracking_history" value="Currently tracking"> Currently tracking</label>
+        </div>
+      </div>
+      <div class="row-1 field">
+        <label>Describe a typical day of eating</label>
+        <span class="hint">Breakfast, lunch, dinner, snacks. Rough amounts are fine.</span>
+        <textarea name="typical_day" rows="4" placeholder="e.g. Breakfast: oats with milk and banana. Lunch: chicken wrap..."></textarea>
+      </div>
+      <div class="row-1 field">
+        <label>Any food allergies, intolerances, or foods you strongly dislike?</label>
+        <textarea name="allergies" rows="2" placeholder="e.g. lactose intolerant, no shellfish, hate broccoli..."></textarea>
+      </div>
+      <div class="checkbox-group">
+        <div class="group-label">Do you follow any specific dietary approach?</div>
+        <div class="check-options">
+          <label><input type="checkbox" name="diet[]" value="None"> None</label>
+          <label><input type="checkbox" name="diet[]" value="Vegetarian"> Vegetarian</label>
+          <label><input type="checkbox" name="diet[]" value="Vegan"> Vegan</label>
+          <label><input type="checkbox" name="diet[]" value="Gluten-free"> Gluten-free</label>
+          <label><input type="checkbox" name="diet[]" value="Dairy-free"> Dairy-free</label>
+          <label><input type="checkbox" name="diet[]" value="Intermittent fasting"> Intermittent fasting</label>
+          <label><input type="checkbox" name="diet[]" value="Other"> Other</label>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field"><label>If Other, please specify</label><input type="text" name="diet_other" placeholder="e.g. Carnivore, Keto..."></div>
+        <div class="field"><label>Approx. daily water intake</label><span class="hint">litres per day</span><input type="text" name="water" placeholder="e.g. 2 litres"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 TRAINING HISTORY -->
+  <div class="section">
+    <div class="section-header">05 &nbsp; Training History</div>
+    <div class="section-body">
+      <div class="checkbox-group">
+        <div class="group-label">Current training status</div>
+        <div class="check-options">
+          <label><input type="radio" name="training_freq" value="Not training"> Not training</label>
+          <label><input type="radio" name="training_freq" value="Just starting"> Just starting</label>
+          <label><input type="radio" name="training_freq" value="1-2x per week"> 1-2x per week</label>
+          <label><input type="radio" name="training_freq" value="3-4x per week"> 3-4x per week</label>
+          <label><input type="radio" name="training_freq" value="5+ per week"> 5+ per week</label>
+        </div>
+      </div>
+      <div class="checkbox-group">
+        <div class="group-label">Type of training</div>
+        <div class="check-options">
+          <label><input type="checkbox" name="training_type[]" value="None"> None</label>
+          <label><input type="checkbox" name="training_type[]" value="Weight training"> Weight training</label>
+          <label><input type="checkbox" name="training_type[]" value="Cardio only"> Cardio only</label>
+          <label><input type="checkbox" name="training_type[]" value="Weights + cardio"> Weights + cardio</label>
+          <label><input type="checkbox" name="training_type[]" value="Team sport"> Team sport</label>
+          <label><input type="checkbox" name="training_type[]" value="Other"> Other</label>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field"><label>Years of training experience</label><span class="hint">0 if none</span><input type="text" name="training_years" placeholder="e.g. 3 years"></div>
+        <div class="field"><label>Average session length</label><span class="hint">minutes</span><input type="text" name="session_length" placeholder="e.g. 60 minutes"></div>
+      </div>
+      <div class="row-1 field">
+        <label>Describe your current training split or routine</label>
+        <span class="hint">Push/pull/legs, full body, etc. Write 'none' if not training.</span>
+        <textarea name="training_split" rows="3" placeholder="e.g. Mon: chest/triceps, Wed: back/biceps, Fri: legs..."></textarea>
+      </div>
+      <div class="checkbox-group">
+        <div class="group-label">Where do you train?</div>
+        <div class="check-options">
+          <label><input type="radio" name="gym_type" value="Commercial gym"> Commercial gym</label>
+          <label><input type="radio" name="gym_type" value="Home gym"> Home gym</label>
+          <label><input type="radio" name="gym_type" value="Outdoors"> Outdoors</label>
+          <label><input type="radio" name="gym_type" value="Mix"> Mix of the above</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 LIFESTYLE -->
+  <div class="section">
+    <div class="section-header">06 &nbsp; Lifestyle &amp; Daily Routine</div>
+    <div class="section-body">
+      <div class="checkbox-group">
+        <div class="group-label">Activity level during the day</div>
+        <div class="check-options">
+          <label><input type="radio" name="daily_activity" value="Desk job"> Desk job (sedentary)</label>
+          <label><input type="radio" name="daily_activity" value="On feet most of day"> On feet most of day</label>
+          <label><input type="radio" name="daily_activity" value="Physical labour"> Physical labour</label>
+          <label><input type="radio" name="daily_activity" value="Mixed"> Mixed</label>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field"><label>Typical wake-up time</label><span class="hint">e.g. 06:30</span><input type="text" name="wake_time" placeholder="06:30"></div>
+        <div class="field"><label>Typical bedtime</label><span class="hint">e.g. 22:30</span><input type="text" name="bed_time" placeholder="22:30"></div>
+      </div>
+      <div class="checkbox-group">
+        <div class="group-label">Average hours of sleep per night</div>
+        <div class="check-options">
+          <label><input type="radio" name="sleep" value="Less than 5"> Less than 5</label>
+          <label><input type="radio" name="sleep" value="5-6 hours"> 5-6 hours</label>
+          <label><input type="radio" name="sleep" value="6-7 hours"> 6-7 hours</label>
+          <label><input type="radio" name="sleep" value="7-8 hours"> 7-8 hours</label>
+          <label><input type="radio" name="sleep" value="More than 8"> More than 8</label>
+        </div>
+      </div>
+      <div class="checkbox-group">
+        <div class="group-label">Average stress level</div>
+        <div class="check-options">
+          <label><input type="radio" name="stress" value="Very low"> Very low</label>
+          <label><input type="radio" name="stress" value="Low"> Low</label>
+          <label><input type="radio" name="stress" value="Moderate"> Moderate</label>
+          <label><input type="radio" name="stress" value="High"> High</label>
+          <label><input type="radio" name="stress" value="Very high"> Very high</label>
+        </div>
+      </div>
+      <div class="row-1 field">
+        <label>Anything that may affect adherence to the program?</label>
+        <span class="hint">Travel, shift work, childcare, irregular schedule, upcoming events.</span>
+        <textarea name="adherence_notes" rows="2" placeholder="e.g. Business travel every 2-3 weeks, two young kids at home..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 HEALTH & MEDICAL -->
+  <div class="section">
+    <div class="section-header">07 &nbsp; Health &amp; Medical</div>
+    <div class="section-body">
+      <div class="checkbox-group">
+        <div class="group-label">Any current or past injuries?</div>
+        <span class="hint">If yes, please describe below.</span>
+        <div class="check-options">
+          <label><input type="radio" name="injuries" value="No"> No</label>
+          <label><input type="radio" name="injuries" value="Yes, minor"> Yes, minor</label>
+          <label><input type="radio" name="injuries" value="Yes, ongoing"> Yes, ongoing</label>
+        </div>
+      </div>
+      <div class="row-1 field">
+        <label>Injury or medical details (if applicable)</label>
+        <textarea name="injury_details" rows="2" placeholder="e.g. Lower back issue, shoulder impingement in right shoulder..."></textarea>
+      </div>
+      <div class="checkbox-group">
+        <div class="group-label">Currently taking medication or supplements?</div>
+        <span class="hint">If yes, please specify below.</span>
+        <div class="check-options">
+          <label><input type="radio" name="medication" value="No"> No</label>
+          <label><input type="radio" name="medication" value="Supplements only"> Supplements only</label>
+          <label><input type="radio" name="medication" value="Medication"> Medication</label>
+          <label><input type="radio" name="medication" value="Both"> Both</label>
+        </div>
+      </div>
+      <div class="row-1 field">
+        <label>Medication / supplements (if applicable)</label>
+        <textarea name="medication_details" rows="2" placeholder="e.g. Creatine, whey protein, vitamin D..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 CHECK-IN PREFERENCES -->
+  <div class="section">
+    <div class="section-header">08 &nbsp; Check-in Preferences</div>
+    <div class="section-body">
+      <div class="info-box">
+        We start with your <strong>intake call</strong>, where we go through this form together and I build your plan around what you've told me.
+        From there, your 12-week program includes <strong>3 structured check-ins</strong> at Week 4, Week 8, and Week 12.
+        Each one starts with a short written update form, followed by a video call with me.
+      </div>
+      <div class="checkbox-group">
+        <div class="group-label">Preferred day for video calls</div>
+        <div class="check-options">
+          <label><input type="checkbox" name="pref_day[]" value="Monday"> Monday</label>
+          <label><input type="checkbox" name="pref_day[]" value="Tuesday"> Tuesday</label>
+          <label><input type="checkbox" name="pref_day[]" value="Wednesday"> Wednesday</label>
+          <label><input type="checkbox" name="pref_day[]" value="Thursday"> Thursday</label>
+          <label><input type="checkbox" name="pref_day[]" value="Friday"> Friday</label>
+          <label><input type="checkbox" name="pref_day[]" value="Saturday"> Saturday</label>
+          <label><input type="checkbox" name="pref_day[]" value="Sunday"> Sunday</label>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field"><label>Preferred time window</label><span class="hint">e.g. 18:00-20:00</span><input type="text" name="pref_time" placeholder="e.g. 18:00-20:00"></div>
+        <div class="field"><label>Preferred video platform</label><span class="hint">Zoom, Teams, Google Meet</span><input type="text" name="pref_platform" placeholder="e.g. Zoom"></div>
+      </div>
+      <div class="row-1 field">
+        <label>Anything else you would like me to know before we start?</label>
+        <textarea name="extra_notes" rows="3" placeholder="Anything you feel is relevant that wasn't covered above..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 AGREEMENT -->
+  <div class="section">
+    <div class="section-header">09 &nbsp; Agreement</div>
+    <div class="section-body">
+      <div class="agreement-text">
+        By submitting this form, you confirm that the information provided is accurate to the best of your knowledge.
+        You understand that this coaching program provides personalised nutrition guidance and is not a substitute for medical advice.
+      </div>
+      <label class="consent-row">
+        <input type="checkbox" name="health_consent" value="Consent given" required>
+        I give my explicit consent for Simon to process the health information in this form, including injuries, medication, allergies, sleep and body data, in order to build and adjust my nutrition plan. I can withdraw this consent at any time by emailing <a href="mailto:simon@dreamleannutrition.com">simon@dreamleannutrition.com</a>.
+      </label>
+      <div class="row-2">
+        <div class="field"><label>Full name</label><input type="text" name="sig_name" placeholder="Your full name"></div>
+        <div class="field"><label>Today's date</label><input type="text" name="sig_date" placeholder="DD / MM / YYYY"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-area">
+    <p>Your information is kept strictly confidential and used only for coaching purposes.</p>
+    <button type="submit">Submit Intake Form</button>
+  </div>
+
+</form>
+</div>
+
+<footer>
+  Dream Lean &nbsp;|&nbsp; 1-on-1 Coaching Program &nbsp;|&nbsp; Confidential
+</footer>
+
+</body>
+</html>
