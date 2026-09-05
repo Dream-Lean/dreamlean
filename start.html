@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome — Dream Lean 1-on-1 Coaching</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Your Dream Lean coaching starts here.">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold:        #BF8F00;
+  --gold-bright: #D4A017;
+  --black:       #0F0F0F;
+  --dark:        #181818;
+  --grey:        #3A3A3A;
+  --text:        #E8E0D0;
+  --text-mute:   #9A9080;
+  --white:       #FFFFFF;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+header {
+  padding: 18px 48px;
+  border-bottom: 1px solid rgba(191,143,0,0.2);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 900;
+  color: var(--gold-bright);
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--white); }
+
+/* ── Body ─────────────────────────────────────────────────────── */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 24px;
+}
+.card { max-width: 620px; width: 100%; }
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 5vw, 56px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 18px;
+}
+.lede {
+  font-size: 17px;
+  color: var(--text);
+  margin-bottom: 40px;
+  max-width: 54ch;
+}
+.lede strong { color: var(--gold-bright); font-weight: 600; }
+
+.next {
+  border-top: 1px solid var(--grey);
+  padding-top: 32px;
+}
+.next h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 22px;
+}
+.next ol {
+  list-style: none;
+  counter-reset: step;
+}
+.next li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 42px;
+  margin-bottom: 24px;
+  color: var(--text-mute);
+  font-size: 15px;
+  max-width: 56ch;
+}
+.next li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 1px;
+  width: 26px; height: 26px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold-bright);
+  font-size: 13px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.next li strong {
+  display: block;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.next li a { color: var(--gold-bright); word-break: break-word; }
+
+.note {
+  background: var(--dark);
+  border-left: 2px solid var(--gold);
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--text-mute);
+  margin: 36px 0 34px;
+  max-width: 56ch;
+}
+.note a { color: var(--gold-bright); }
+
+.sign {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold-bright);
+}
+
+.pdf-note {
+  margin-top: 34px;
+  padding-top: 18px;
+  border-top: 1px solid var(--grey);
+  font-size: 13px;
+  color: var(--text-mute);
+  max-width: 56ch;
+}
+
+/* ── Footer ───────────────────────────────────────────────────── */
+footer {
+  padding: 28px 48px;
+  border-top: 1px solid var(--grey);
+  font-size: 13px;
+  color: var(--text-mute);
+  text-align: center;
+}
+footer a { color: var(--text-mute); text-decoration: none; }
+footer a:hover { color: var(--gold-bright); }
+footer .dot { margin: 0 14px; color: var(--grey); }
+
+a:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+
+@media (max-width: 640px) {
+  header, footer { padding-left: 24px; padding-right: 24px; }
+  main { padding: 48px 24px; }
+}
+
+/* ── Print to PDF ─────────────────────────────────────────────── */
+@media print {
+  @page { size: A4; margin: 0; }
+  html { background: #0F0F0F; }
+  /* Fill exactly one A4 sheet and pin the footer to the bottom,
+     so leftover space is black page, not an awkward gap. */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 296mm;
+    height: 296mm;
+    background: #0F0F0F;
+  }
+  header { padding: 22px 50px; flex: 0 0 auto; }
+  .nav-logo { font-size: 18px; }
+  main {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    padding: 30px 50px;
+  }
+  .card { max-width: 620px; }
+  h1 { font-size: 33px; margin-bottom: 15px; }
+  .lede { font-size: 14px; margin-bottom: 27px; max-width: 54ch; }
+  .next { padding-top: 25px; }
+  .next h2 { font-size: 18px; margin-bottom: 18px; }
+  .next li {
+    font-size: 12.5px; line-height: 1.58;
+    margin-bottom: 17px; padding-left: 37px; max-width: 56ch;
+  }
+  .next li::before { width: 23px; height: 23px; font-size: 12px; }
+  .note { font-size: 12px; padding: 14px 18px; margin: 25px 0 22px; max-width: 56ch; }
+  .sign { font-size: 17px; }
+  .pdf-note { display: none; }
+  footer { padding: 20px 50px; font-size: 11px; flex: 0 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://dreamleannutrition.com/" class="nav-logo">DREΛM <span>LEΛN</span></a>
+</header>
+
+<main>
+  <div class="card">
+
+    <h1>Welcome. Let's get started.</h1>
+
+    <p class="lede">Thank you for joining. Here is what happens over the next <strong>twelve weeks</strong>, and what I need from you first.</p>
+
+    <div class="next">
+      <h2>Your first four steps</h2>
+      <ol>
+        <li><strong>Your intake form</strong>Fill this in first: <a href="https://dreamleannutrition.com/intake.html">dreamleannutrition.com/intake.html</a>. It covers your training, nutrition, schedule and health history in detail. It takes about 10 minutes, and everything you write shapes the plan I build for you, so take your time with it.</li>
+        <li><strong>Your intake call</strong>Book your call here: <a href="https://calendly.com/dreamlean/intake">calendly.com/dreamlean/intake</a>. Pick a slot a few days out so I've had time to read your form. We go through your answers together, I ask the questions the form can't, and your plan gets built around that conversation.</li>
+        <li><strong>Your plan</strong>You receive your personal nutrition plan, built around your stats, your goal and your schedule.</li>
+        <li><strong>Check-ins at weeks 4, 8 and 12</strong>Before each one you send me a short written update: your weight, how the plan has felt, and anything that got in the way. Then we talk it through on a video call.</li>
+      </ol>
+    </div>
+
+    <p class="note">Between check-ins you have direct access to me at <a href="mailto:simon@dreamleannutrition.com">simon@dreamleannutrition.com</a>. Add it to your contacts so my replies don't land in spam.</p>
+
+    <p class="lede">Please complete the intake form as soon as you can. It's the first thing I need before we speak.</p>
+
+    <p class="sign">Simon</p>
+
+    <p class="pdf-note">A copy of this page is on its way to your inbox as a PDF. If it hasn't arrived in a few minutes, check your spam folder.</p>
+
+  </div>
+</main>
+
+<footer>
+  <a href="mailto:simon@dreamleannutrition.com">simon@dreamleannutrition.com</a>
+  <span class="dot">·</span>
+  <a href="https://dreamleannutrition.com/">dreamleannutrition.com</a>
+</footer>
+
+</body>
+</html>
