@@ -455,7 +455,8 @@ nav {
 }
 .program-desc {
   font-size: 14px; color: var(--text-mute);
-  line-height: 1.6; margin-bottom: 24px; flex: 1;
+  line-height: 1.6; margin-bottom: 24px;
+  min-height: 112px;
 }
 .program-note strong { color: var(--gold-bright); font-weight: 600; }
 .program-note {
@@ -469,7 +470,7 @@ nav {
   color: var(--gold-bright); margin-bottom: 20px;
 }
 .program-price span { font-size: 14px; color: var(--text-mute); font-family: 'Inter', sans-serif; font-weight: 400; }
-.program-features { list-style: none; margin-bottom: 28px; }
+.program-features { list-style: none; margin-bottom: 28px; flex: 1; }
 .program-features li {
   font-size: 13px; color: var(--text-mute);
   padding: 6px 0; padding-left: 20px;
@@ -480,6 +481,47 @@ nav {
   content: '✓'; position: absolute; left: 0;
   color: var(--gold); font-weight: 700; font-size: 12px;
 }
+
+/* ── FAQ ───────────────────────────────────────────── */
+#faq {
+  background: var(--dark);
+  padding: 100px 80px;
+}
+.faq-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+.faq-header .section-title { margin-bottom: 12px; }
+.faq-header p { color: var(--text-mute); font-size: 15px; line-height: 1.7; }
+.faq-list { max-width: 760px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--grey);
+}
+.faq-item summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 22px 0;
+  font-size: 16px; font-weight: 600; color: var(--white);
+  line-height: 1.5;
+  transition: color .18s ease;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--gold-bright); }
+.faq-item summary::after {
+  content: '+';
+  margin-left: auto; flex: 0 0 auto;
+  font-size: 22px; font-weight: 400; line-height: 1;
+  color: var(--gold); transition: transform .2s ease;
+}
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-item[open] summary { color: var(--gold-bright); }
+.faq-answer {
+  padding: 0 44px 24px 0;
+  font-size: 15px; color: var(--text-mute); line-height: 1.8;
+}
+.faq-foot {
+  max-width: 760px; margin: 36px auto 0;
+  text-align: center; font-size: 14px; color: var(--text-mute);
+}
+.faq-foot a { color: var(--gold-bright); text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
+.faq-foot a:hover { color: var(--gold-pale); }
 
 /* ── WINDOW SECTION ───────────────────────────────────────────── */
 #vision {
@@ -766,7 +808,7 @@ footer p { font-size: 12px; color: var(--text-mute); }
 
 .pv-tab .fit{transform:scale(.615) !important;}
 /* the tablet grew to 250px, so its stage must follow or the frame spills out */
-.pv-stage{width:250px !important;height:341px !important;}
+.pv-stage{width:250px !important;height:329px !important;}
 .pv-tab{width:250px !important;}
 .pv-tab .scr{width:232px !important;height:311px !important;}
 /* planner card fills its screen exactly: no letterboxing */
@@ -1276,6 +1318,11 @@ body.legal-open { overflow: hidden; }
   .solution-grid { grid-template-columns: 1fr; gap: 40px; }
   #programs { padding: 64px 24px; }
   .programs-grid { grid-template-columns: 1fr; gap: 16px; }
+  .program-desc { min-height: 0; }
+  .program-features { flex: none; }
+  #faq { padding: 64px 24px; }
+  .faq-item summary { font-size: 15px; gap: 14px; }
+  .faq-answer { padding-right: 28px; }
   .vision-overlay { padding: 0 24px; }
   #cta { padding: 64px 24px; }
   #apply { padding: 64px 24px; }
@@ -1401,7 +1448,7 @@ body.legal-open { overflow: hidden; }
 
 
 /* ===== bundle + coaching card visuals ===== */
-.pv-stage{position:relative;width:226px;height:297px;margin:0 auto 22px;}
+.pv-stage{position:relative;width:226px;height:329px;margin:0 auto 22px;}
 .pv-stage .floorshadow{position:absolute;left:2%;right:6%;bottom:6px;height:20px;
   background:radial-gradient(ellipse,rgba(0,0,0,.75),transparent 72%);filter:blur(8px);z-index:1;}
 .bd-tab{position:absolute;right:-6px;top:10px;width:138px;border-radius:12px;padding:6px;
@@ -1421,9 +1468,9 @@ body.legal-open { overflow: hidden; }
 .bd-book .pages::after{content:'';position:absolute;top:5px;right:-8px;bottom:5px;width:8px;
   background:repeating-linear-gradient(to right,#EDEAE2 0 1px,#CFCBBF 1px 2px);
   transform:skewY(-6deg);border-radius:0 2px 2px 0;box-shadow:2px 2px 8px rgba(0,0,0,.5);}
-.pv-photo{position:absolute;top:50%;left:0;transform:translateY(-50%);width:226px;height:234px;border-radius:4px;overflow:hidden;background:#0A0A0A;
+.pv-photo{position:absolute;top:0;left:0;width:100%;border-radius:4px;overflow:hidden;background:#0A0A0A;
   box-shadow:inset 0 0 0 1px rgba(191,143,0,.35);}
-.pv-photo img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;}
+.pv-photo img{width:100%;height:auto;display:block;}
 </style>
 </head>
 <body>
@@ -1841,6 +1888,7 @@ body.legal-open { overflow: hidden; }
           <li>Supplement guide with timing & dosage</li>
           <li>Carb cycling & peak week strategies</li>
           <li>42-question FAQ</li>
+          <li>300+ term index</li>
         </ul>
         <p class="program-note">Add the Meal Planner at checkout and pay <strong>€57,91</strong> for both, instead of €69,90.</p>
         <a href="#" data-checkout="ebook" class="btn-primary" style="text-align:center;width:100%;">Buy the eBook</a>
@@ -1880,11 +1928,62 @@ body.legal-open { overflow: hidden; }
           <li>Full intake & goal assessment</li>
           <li>Adjustments throughout the program</li>
         </ul>
+        <p class="program-note">Every plan is written from scratch, so I only take on a few clients at a time.</p>
         <a href="#apply" class="btn-primary" style="text-align:center;width:100%;">Apply Now</a>
       </div>
     </div>
 
   </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-header">
+    <p class="section-eyebrow">Questions</p>
+    <h2 class="section-title">Before You<br>Decide</h2>
+    <p>The things people ask most before getting started.</p>
+  </div>
+
+  <div class="faq-list">
+
+    <details class="faq-item">
+      <summary>Which one should I start with?</summary>
+      <div class="faq-answer">The eBook if you want to understand nutrition and run it yourself. The Meal Planner if you already know the principles and want the maths done for you. Coaching if you want me building the plan and holding you to it for twelve weeks. Most people start with the book.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Who is this for?</summary>
+      <div class="faq-answer">Beginners and experienced lifters both. The book starts with why nutrition works the way it does and builds to advanced application, so wherever you're starting from there's something in it. What it asks of you is that you're willing to read rather than just follow a plan.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Do I have to count calories?</summary>
+      <div class="faq-answer">At the start, yes. It's how you learn what food actually contains. Whether you keep tracking after that depends on your goal and how precise you need to be.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Will it work if I'm vegetarian, or have foods I can't eat?</summary>
+      <div class="faq-answer">Yes. The principles apply regardless of what you eat. You adapt them to your own diet instead of following a fixed set of meals.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What's in the coaching?</summary>
+      <div class="faq-answer">Twelve weeks. An intake form and an intake call, a nutrition plan built around your stats, your goal and your schedule, and check-ins at weeks 4, 8 and 12 where you send a written update and we talk it through on video. You apply first, and I come back to you.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>How do I get my files?</summary>
+      <div class="faq-answer">Straight after payment. The eBook is a PDF you download and keep. The Meal Planner comes as both a Google Sheets version you copy to your own account and an Excel file, so you can work in either.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>What happens after the twelve weeks?</summary>
+      <div class="faq-answer">The twelve weeks are the program, and by the end you should be running your own nutrition rather than depending on me. Nothing renews and nothing rebills. Plenty of clients want to keep going though, and I'm always happy to, so we sort that out together near the end.</div>
+    </details>
+
+  </div>
+
+  <p class="faq-foot">Still unsure? Email me at <a href="mailto:simon@dreamleannutrition.com">simon@dreamleannutrition.com</a> and I'll answer you myself.</p>
 </section>
 
 <!-- VISION QUOTE (window photo) -->
