@@ -146,6 +146,44 @@ nav {
 .proof-attrib strong { color: var(--text); font-weight: 600; }
 .proof-note { font-size: 12.5px; color: var(--text-mute); margin-top: 14px; }
 
+/* ── reader reviews ───────────────────────────────────────────── */
+#reviews { padding: 96px 80px; background: var(--dark-mid);
+           border-bottom: 1px solid var(--grey); }
+.rev-header { text-align: center; max-width: 660px; margin: 0 auto 52px; }
+.rev-header p { color: var(--text-mute); font-size: 15px; line-height: 1.7; }
+.rev-grid { display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 22px; max-width: 1120px; margin: 0 auto; align-items: stretch; }
+.rev-card { background: var(--dark); border: 1px solid var(--grey);
+            border-radius: 4px; padding: 28px 26px 22px;
+            display: flex; flex-direction: column; }
+.rev-tag { font-size: 10.5px; font-weight: 700; letter-spacing: 1.6px;
+           text-transform: uppercase; color: var(--gold-bright);
+           margin: 0 0 15px; }
+.rev-card blockquote { font-size: 14.5px; line-height: 1.78; color: var(--text);
+                       margin: 0 0 20px; flex: 1 1 auto; }
+.rev-name { font-size: 13.5px; color: var(--text-mute); margin: 0;
+            padding-top: 15px; border-top: 1px solid var(--grey); }
+.rev-name strong { color: var(--text); font-weight: 600; }
+.rev-foot { text-align: center; font-size: 12.5px; color: var(--text-mute);
+            line-height: 1.7; max-width: 640px; margin: 42px auto 0; }
+.rev-swipe { display: none; }
+@media (max-width: 1000px) { .rev-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  #reviews { padding: 64px 0; }
+  .rev-header, .rev-foot { padding-left: 24px; padding-right: 24px; }
+  .rev-grid { grid-template-columns: none; grid-auto-flow: column;
+              grid-auto-columns: 82%; gap: 14px; padding: 2px 24px;
+              overflow-x: auto; scroll-snap-type: x mandatory;
+              -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .rev-grid::-webkit-scrollbar { display: none; }
+  .rev-card { scroll-snap-align: center; padding: 24px 22px 19px; }
+  .rev-swipe { display: block; text-align: center; font-size: 11px;
+               letter-spacing: 1.6px; text-transform: uppercase;
+               color: var(--text-mute); margin: 18px 0 0; }
+  .rev-foot { margin-top: 26px; }
+}
+
+
 @media (max-width: 768px) {
   #proof { padding: 64px 24px; }
   .proof-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -1901,6 +1939,51 @@ alt="" /></noscript>
 </section>
 
 <!-- PROGRAMS -->
+<section id="reviews">
+  <div class="rev-header">
+    <p class="section-eyebrow">Reviewed</p>
+    <h2 class="section-title">Different Walls.<br>Same Book.</h2>
+    <p>A few of the people I have worked with, each stuck on something different, writing about the book they used.</p>
+  </div>
+
+  <div class="rev-grid">
+    <figure class="rev-card">
+      <p class="rev-tag">Strength and size plateau</p>
+      <blockquote>&ldquo;I had been training hard for years and plateaued on both strength and size. Dream Lean finally showed me what I had been getting wrong. I'm setting personal bests again and my body is at a level I had not reached before.&rdquo;</blockquote>
+      <figcaption class="rev-name"><strong>Danny</strong></figcaption>
+    </figure>
+    <figure class="rev-card">
+      <p class="rev-tag">Cutting without losing size</p>
+      <blockquote>&ldquo;I needed to get to a lower body fat percentage, but every time I dieted down I lost too much muscle along with the fat. Dream Lean laid out exactly what was causing that. I'm at 7% now and the size is still there.&rdquo;</blockquote>
+      <figcaption class="rev-name"><strong>Oscar</strong></figcaption>
+    </figure>
+    <figure class="rev-card">
+      <p class="rev-tag">First photoshoot</p>
+      <blockquote>&ldquo;I had a shoot coming up and no experience with any of the peak week techniques. Everything is explained in a way you can actually follow. The jargon gets explained, nothing assumes you already know the basics. I came in at my best.&rdquo;</blockquote>
+      <figcaption class="rev-name"><strong>Arie</strong></figcaption>
+    </figure>
+    <figure class="rev-card">
+      <p class="rev-tag">Starting from zero</p>
+      <blockquote>&ldquo;I had no idea where to start. How do you weigh food, how do you know what you need, what are net carbs. There is too much online and most of it contradicts itself. Dream Lean has it all in one place. I've read it several times and still go back through the clickable index whenever I need a topic.&rdquo;</blockquote>
+      <figcaption class="rev-name"><strong>Yi</strong></figcaption>
+    </figure>
+    <figure class="rev-card">
+      <p class="rev-tag">Training, not just food</p>
+      <blockquote>&ldquo;I expected nutrition, but the training chapters are what surprised me. I had never heard of fractional sets. One read and it was immediately clear why volume isn't the main driver of muscle growth. It explained in two pages what I had been getting wrong for years.&rdquo;</blockquote>
+      <figcaption class="rev-name"><strong>Gio</strong></figcaption>
+    </figure>
+    <figure class="rev-card">
+      <p class="rev-tag">Years of training, no result</p>
+      <blockquote>&ldquo;I trained for years and the result I wanted just never came. Now I understand why nutrition decides it. Muscle separation showed up from genuinely simple changes to how I eat. The carb cycling, and knowing when to time carbs so they actually work for me, was the eye opener.&rdquo;</blockquote>
+      <figcaption class="rev-name"><strong>Pasquale</strong></figcaption>
+    </figure>
+  </div>
+
+  <p class="rev-swipe">Swipe for more &rarr;</p>
+
+  <p class="rev-foot">Their own words, edited only for length and published with their permission. No incentives, no paid placements.</p>
+</section>
+
 <section id="programs">
   <div class="programs-header">
     <p class="section-eyebrow">Choose Your Path</p>
