@@ -691,7 +691,10 @@ footer {
 }
 
 .footer-social { margin-top: 10px; }
-.footer-social a { display: inline-block; line-height: 1.6; }
+.footer-col .footer-social a { display: inline-flex; align-items: center;
+                    gap: 8px; line-height: 1.6; }
+.footer-col .footer-social img { width: 18px; height: 18px; display: block;
+                    border-radius: 4px; flex: 0 0 auto; }
 .footer-social a:hover { color: var(--gold-bright); }
 .footer-social .handle-at { color: var(--gold); }
 
@@ -1606,7 +1609,7 @@ alt="" /></noscript>
   </button>
   <ul class="nav-links" id="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#solution">The Book</a></li>
+    <li><a href="#peek">Look Inside</a></li>
     <li><a href="#programs">Programs</a></li>
         <li><a href="#chapter">Free Chapter</a></li>
     <li><a href="#programs" class="nav-cta">Get Started</a></li>
@@ -1622,9 +1625,8 @@ alt="" /></noscript>
     <p class="hero-desc">Rooted in science, designed around your body, and explained so clearly you'll know exactly what to do, and why.</p>
     <div class="hero-ctas">
       <a href="#solution" class="btn-primary">Get the Book</a>
-      <a href="#peek" class="btn-ghost">Look Inside</a>
+      <a href="#chapter" class="btn-ghost">Read a Full Chapter Free</a>
     </div>
-    <p class="hero-free">Not ready to buy? <a href="#chapter">Read a full chapter free</a></p>
     <div class="hero-stats">
       <div>
         <div class="stat-num">600<span style="font-size:18px;color:var(--gold)">+</span></div>
@@ -2454,7 +2456,8 @@ alt="" /></noscript>
       <div class="footer-social">
         <a href="https://www.instagram.com/ilsalvatorefitness/"
            target="_blank" rel="noopener noreferrer">
-          <span class="handle-at">&#64;</span>ilsalvatorefitness on Instagram</a>
+          <img src="data:image/png;base64,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" alt="" width="18" height="18">
+          <span><span class="handle-at">&#64;</span>ilsalvatorefitness</span></a>
       </div>
     </div>
 
